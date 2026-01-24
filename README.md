@@ -1,43 +1,59 @@
-# Mintlify Starter Kit
+# YouTube-Floater Documentation
 
-Use the starter kit to get your docs deployed and ready to customize.
+Official documentation for YouTube-Floater - an always-on-top YouTube player for macOS.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## About YouTube-Floater
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+YouTube-Floater is a standalone macOS application that enables users to play YouTube videos in a floating, always-on-top window while working on other tasks. Perfect for MacBook users with a single screen who want to watch videos without switching between windows.
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+### Key Features
 
-## Development
+- **Always-on-top floating window** with adjustable transparency
+- **Independent volume control** separate from system audio
+- **Corner-snapping** for quick positioning
+- **No browser extensions** or system modifications required
+- **Apple Silicon support** and modern macOS compatibility
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
+## Documentation
 
-```
+This repository contains the documentation site for YouTube-Floater, built with Mintlify.
+
+- [View Documentation](https://youtubefloater.com/docs)
+- [Download App](https://youtubefloater.com)
+- [GitHub Repository](https://github.com/jimbrend/YouTube-Floater)
+
+## Local Development
+
+To preview documentation changes locally:
+
+1. Install the Mintlify CLI:
+```bash
 npm i -g mint
 ```
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
-
-```
+2. Run the development server:
+```bash
 mint dev
 ```
 
-View your local preview at `http://localhost:3000`.
+3. View your local preview at `http://localhost:3000`
 
-## Publishing changes
+## Contributing
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+We welcome contributions to improve the documentation:
 
-## Need help?
+1. Fork this repository
+2. Make your changes
+3. Test locally with `mint dev`
+4. Submit a pull request
 
-### Troubleshooting
+## Publishing Changes
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+Documentation changes are automatically deployed to production after merging to the main branch.
 
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+## Resources
+
+- [YouTube-Floater App](https://youtubefloater.com)
+- [Main Repository](https://github.com/jimbrend/YouTube-Floater)
+- [Report Issues](https://github.com/jimbrend/YouTube-Floater/issues)
+- [Mintlify Documentation](https://mintlify.com/docs)

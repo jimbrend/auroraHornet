@@ -1,80 +1,110 @@
 ---
 title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+description: "Get YouTube-Floater up and running in minutes"
 ---
 
-## Get started in three steps
+## Installation
 
-Get your documentation site running locally and make your first customization.
+Get started with YouTube-Floater in just a few simple steps.
 
-### Step 1: Set up your local environment
+### macOS Installation
+
+<Steps>
+<Step title="Download the app">
+  Visit [youtubefloater.com](https://youtubefloater.com) and download the latest version for macOS.
+</Step>
+
+<Step title="Install">
+  1. Open the downloaded `.dmg` file
+  2. Drag **YouTube-Floater** to your Applications folder
+  3. Launch the app from Applications
+</Step>
+
+<Step title="First launch">
+  On first launch, macOS may ask you to confirm opening the app since it was downloaded from the internet. Click **Open** to proceed.
+
+  <Tip>If you encounter security warnings, go to System Preferences > Security & Privacy and click "Open Anyway"</Tip>
+</Step>
+</Steps>
+
+## Using YouTube-Floater
+
+Start watching YouTube videos in a floating window immediately.
+
+### Basic Usage
 
 <AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
-    
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
+  <Accordion icon="link" title="Play a video">
+    1. Copy any YouTube video URL from your browser
+    2. Paste it into the YouTube-Floater URL input field
+    3. The video will instantly load and start playing in the floating window
   </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
-    
-    <Tip>Your preview updates automatically as you edit files.</Tip>
+
+  <Accordion icon="sliders" title="Adjust controls">
+    Use the control panel to customize your viewing experience:
+    - **Opacity Slider**: Adjust window transparency to see content underneath
+    - **Volume Slider**: Control video volume independently from system audio
+    - **Toggle Controls**: Hide/show the control panel to minimize distractions
+  </Accordion>
+
+  <Accordion icon="arrows-up-down-left-right" title="Position and resize">
+    - **Drag**: Click and drag anywhere on the window to reposition
+    - **Resize**: Drag the window edges to adjust size
+    - **Corner Snap**: Drag near screen corners to auto-snap the window
+  </Accordion>
+
+  <Accordion icon="browser" title="Open in browser">
+    Click the "Open in Browser" button to launch the current video in your default web browser.
   </Accordion>
 </AccordionGroup>
 
-### Step 2: Deploy your changes
+## System Requirements
 
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-    
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
+<Info>
+  **Requirements**:
+  - macOS 10.13 (High Sierra) or later
+  - Apple Silicon (M1/M2/M3) or Intel processor
+  - Internet connection for video streaming
+</Info>
 
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
-
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
-
-### Step 3: Go live
-
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
-
-## Next steps
-
-Now that you have your docs running, explore these key features:
+## Tips & Best Practices
 
 <CardGroup cols={2}>
 
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
+<Card title="Corner Positioning" icon="arrows-maximize">
+  Drag the window to any corner for quick snapping - perfect for keeping videos accessible while working.
 </Card>
 
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
+<Card title="Transparency" icon="eye">
+  Use higher transparency when you need to see content underneath, or lower transparency for focused viewing.
 </Card>
 
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
+<Card title="Keyboard Shortcuts" icon="keyboard">
+  Standard YouTube shortcuts work - spacebar to pause/play, arrow keys to skip, etc.
 </Card>
 
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
+<Card title="Volume Control" icon="volume-high">
+  Adjust volume independently - watch tutorials quietly while listening to music elsewhere.
 </Card>
 
 </CardGroup>
 
-<Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
-</Note>
+## Known Limitations
+
+<Warning>
+  YouTube implements CORS restrictions that may cause playback interruptions after several plays. If this occurs, simply refresh the video by re-pasting the URL.
+</Warning>
+
+## Next Steps
+
+<CardGroup cols={2}>
+
+<Card title="Development Setup" icon="code" href="/development">
+  Want to contribute? Learn how to run YouTube-Floater locally from source.
+</Card>
+
+<Card title="Report Issues" icon="github" href="https://github.com/jimbrend/YouTube-Floater/issues">
+  Found a bug or have a feature request? Open an issue on GitHub.
+</Card>
+
+</CardGroup>
