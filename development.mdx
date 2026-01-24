@@ -1,94 +1,189 @@
 ---
 title: 'Development'
-description: 'Preview changes locally to update your docs'
+description: 'Build and run YouTube-Floater locally for development'
 ---
 
 <Info>
   **Prerequisites**:
-  - Node.js version 19 or higher
-  - A docs repository with a `docs.json` file
+  - Node.js version 14 or higher
+  - npm or yarn package manager
+  - macOS (for testing the app)
+  - Git
 </Info>
 
-Follow these steps to install and run Mintlify on your operating system.
+Follow these steps to set up YouTube-Floater for local development.
+
+## Getting Started
 
 <Steps>
-<Step title="Install the Mintlify CLI">
+<Step title="Clone the repository">
+
+Clone the YouTube-Floater repository from GitHub:
 
 ```bash
-npm i -g mint
+git clone https://github.com/jimbrend/YouTube-Floater.git
+cd YouTube-Floater
 ```
 </Step>
 
-<Step title="Preview locally">
+<Step title="Install dependencies">
 
-Navigate to your docs directory where your `docs.json` file is located, and run the following command:
+Install all required Node.js packages:
 
 ```bash
-mint dev
+npm install
 ```
 
-A local preview of your documentation will be available at `http://localhost:3000`.
+This will install Electron.js and all other dependencies needed to run the app.
+
+</Step>
+
+<Step title="Start the development server">
+
+Run the app in development mode:
+
+```bash
+npm start
+```
+
+The YouTube-Floater application will launch in development mode with hot-reloading enabled.
 
 </Step>
 </Steps>
 
-## Custom ports
+## Project Structure
 
-By default, Mintlify uses port 3000. You can customize the port Mintlify runs on by using the `--port` flag. For example, to run Mintlify on port 3333, use this command:
+Understanding the codebase structure:
+
+```
+YouTube-Floater/
+├── main.js           # Electron main process
+├── renderer.js       # Renderer process (UI logic)
+├── index.html        # Main window HTML
+├── styles.css        # Application styles
+├── package.json      # Dependencies and scripts
+└── assets/          # Icons and images
+```
+
+## Building for Distribution
+
+To create a distributable .dmg file for macOS:
+
+<Steps>
+<Step title="Install electron-packager">
+
+If not already installed:
 
 ```bash
-mint dev --port 3333
+npm install electron-packager --save-dev
 ```
+</Step>
 
-If you attempt to run Mintlify on a port that's already in use, it will use the next available port:
+<Step title="Build the app">
 
-```md
-Port 3000 is already in use. Trying 3001 instead.
-```
-
-## Mintlify versions
-
-Please note that each CLI release is associated with a specific version of Mintlify. If your local preview does not align with the production version, please update the CLI:
+Create a production build:
 
 ```bash
-npm mint update
+npm run build
 ```
 
-## Validating links
+This will generate a distributable application in the `dist/` directory.
 
-The CLI can assist with validating links in your documentation. To identify any broken links, use the following command:
+</Step>
+</Steps>
 
-```bash
-mint broken-links
-```
+## Technical Implementation
 
-## Deployment
+### Key Technologies
 
-If the deployment is successful, you should see the following:
+**Electron.js Framework**
+- `BrowserWindow`: Creates the floating window with always-on-top capability
+- `IPC`: Handles communication between main and renderer processes
+- `webPreferences`: Configures security and node integration
 
-<Frame>
-  <img src="/images/checks-passed.png" alt="Screenshot of a deployment confirmation message that says All checks have passed." style={{ borderRadius: '0.5rem' }} />
-</Frame>
+**YouTube Integration**
+- YouTube Embed Player API for video playback
+- URL parsing to extract video IDs
+- Embed parameters for custom controls
 
-## Code formatting
+**Window Management**
+- Custom drag handlers for repositioning
+- Corner-snapping algorithm for quick positioning
+- Opacity control using CSS and Electron APIs
 
-We suggest using extensions on your IDE to recognize and format MDX. If you're a VSCode user, consider the [MDX VSCode extension](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) for syntax highlighting, and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) for code formatting.
+## Development Tips
+
+<AccordionGroup>
+  <Accordion title="Debugging">
+    Open Developer Tools while running the app:
+    - macOS: `Cmd + Option + I`
+    - Or add to main.js: `mainWindow.webContents.openDevTools()`
+  </Accordion>
+
+  <Accordion title="Testing changes">
+    The app supports hot-reloading in development mode. Simply save your changes and the app will automatically reload.
+  </Accordion>
+
+  <Accordion title="Working with YouTube API">
+    Be aware of YouTube's CORS restrictions. The app uses the official YouTube Embed Player API which has some limitations on rapid reloads.
+  </Accordion>
+</AccordionGroup>
+
+## Contributing
+
+Want to contribute to YouTube-Floater?
+
+1. **Fork the repository** on GitHub
+2. **Create a feature branch**: `git checkout -b feature/your-feature-name`
+3. **Make your changes** and test thoroughly
+4. **Commit your changes**: `git commit -m "Add your feature"`
+5. **Push to your fork**: `git push origin feature/your-feature-name`
+6. **Open a Pull Request** on the main repository
+
+## Roadmap Features
+
+Current development priorities (95% complete):
+
+**Completed:**
+- Always-on-top floating window
+- Drag and reposition functionality
+- Corner snapping
+- Volume and opacity controls
+- Browser integration
+
+**Planned:**
+- Playlist support
+- Persistent window state (remember position/size)
+- Dark/light theme toggle
+- AI-powered video synopsis
+- Auto-update functionality
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title='Error: Could not load the "sharp" module using the darwin-arm64 runtime'>
-
-    This may be due to an outdated version of node. Try the following:
-    1. Remove the currently-installed version of the CLI: `npm remove -g mint`
-    2. Upgrade to Node v19 or higher.
-    3. Reinstall the CLI: `npm i -g mint`
+  <Accordion title="App won't start">
+    1. Ensure you're running Node.js v14 or higher: `node --version`
+    2. Delete `node_modules/` and reinstall: `rm -rf node_modules && npm install`
+    3. Clear npm cache: `npm cache clean --force`
   </Accordion>
 
-  <Accordion title="Issue: Encountering an unknown error">
-  
-    Solution: Go to the root of your device and delete the `~/.mintlify` folder. Then run `mint dev` again.
+  <Accordion title="YouTube videos not loading">
+    This may be due to YouTube's CORS restrictions. Try:
+    - Using a different video URL
+    - Clearing the app cache
+    - Checking your internet connection
+  </Accordion>
+
+  <Accordion title="Build fails on macOS">
+    Ensure you have the latest Xcode Command Line Tools:
+    ```bash
+    xcode-select --install
+    ```
   </Accordion>
 </AccordionGroup>
 
-Curious about what changed in the latest CLI version? Check out the [CLI changelog](https://www.npmjs.com/package/mintlify?activeTab=versions).
+## Resources
+
+- [Electron Documentation](https://www.electronjs.org/docs)
+- [YouTube IFrame Player API](https://developers.google.com/youtube/iframe_api_reference)
+- [Project Repository](https://github.com/jimbrend/YouTube-Floater)
